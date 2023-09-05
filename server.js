@@ -1,6 +1,7 @@
 const express = require('express');
-const mysql = require('mysql12');
-const inquirer = require('nquirer');
+const mysql = require('mysql2');
+const inquirer = require('inquirer');
+var hide = require('hide-secrets')
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -14,12 +15,13 @@ const db = mysql.createConnection(
 
     user: 'root',
 
-    password: 'Thisthing101',
-    database: 'books_db',
+    password: '',
+    database: '',
   },
-  console.log(`Connected to the books_db database.`)
+  console.log(`Connected`)
 );
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+ 
 });
