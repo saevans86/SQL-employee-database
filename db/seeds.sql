@@ -1,4 +1,4 @@
-INSERT INTO department (id, dept_name)
+INSERT INTO departments (id, dept_name)
 VALUES (001, "FINANCES"),
 (002, "CUSTOMER SERVICE"),
 (003, "HUMAN RESOURCES"),
@@ -6,7 +6,7 @@ VALUES (001, "FINANCES"),
 (005, "sr leadership"),
 (006, "executive");
 
-INSERT INTO role (id, title, salary, department_id)
+INSERT INTO roles (id, title, salary, department_id)
 VALUES (1, "accounts_receivable", "40000", 001),
 (2, "customer service", "40000", 002),
 (3, "team lead", "120000", 004),
@@ -19,16 +19,14 @@ VALUES (1, "accounts_receivable", "40000", 001),
 (10, "ceo", "250000", 006);
 
 
-
-
-INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
-VALUES (01, "SHANNA", "BANANA", 1, 04),
-(02, "DANNA", "BANANA", 2, 04),
-(03, "LANA", "BANANA", 3, 04),
-(04, "HANNAH", "MONTANA", 4, 05),
-(05, "STEVE", "BUCHANAN", 5, 06),
-(06, "LUCI", "GONZALES", 6, 09),
-(07, "FREDD", "FLINSTONE", 7, 09),
-(08, "TOM", "WADDLESWORTH", 8, 10),
-(09, "KAMMY", "KEY", 9, 10),
+INSERT INTO employees (id, first_name, last_name, role_id, manager_id)
+VALUES (1, "SHANNA", "BANANA", 1, 4),
+(2, "DANNA", "BANANA", 2, 4),
+(3, "LANA", "BANANA", 3, 4),
+(4, "HANNAH", "MONTANA", 4, 5),
+(5, "STEVE", "BUCHANAN", 5, 6),
+(6, "LUCI", "GONZALES", 6, 9),
+(7, "FREDD", "FLINSTONE", 7, 9),
+(8, "TOM", "WADDLESWORTH", 8, 10),
+(9, "KAMMY", "KEY", 9, 10),
 (10, "JAMAL", "EVANS", 10, null);

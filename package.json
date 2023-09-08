@@ -11,9 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.3.1",
     "hide-secrets": "^2.0.0",
     "inquirer": "^8.2.4",
     "mysql2": "^3.6.0",
+    "sequelize": "^6.33.0",
     "uuid": "^9.0.0"
   }
 }
