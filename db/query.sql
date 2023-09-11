@@ -1,5 +1,6 @@
 SELECT 
-    departments.dept_name AS department_name, employees.first_name, employees.last_name AS employee_name, 
+    departments.dept_name AS department_name,
+    CONCAT(employees.firstname, ' ', employees.lastname) AS employee_name,
     roles.title AS title, 
     roles.salary AS salary 
 FROM 

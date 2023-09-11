@@ -1,83 +1,122 @@
-const express = require('express');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
-const app = express();
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 let db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Kloof3369@',
-  database: 'employees_db',
+  host: process.env.HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  promptUser();
-});
-async function promptUser() {
+console.log(`Server running on port ${PORT}`);
+promptUserMain();
+
+async function promptUserMain() {
   try {
-    // const prompts = new prompt();
-    let response = await inquirer.prompt([
+    let mainlist = await inquirer.prompt([
       {
         name: 'choice',
         message: 'What would you like to do?',
         type: 'list',
-        choices: ['View', 'Edit', 'Add', 'Delete'],
+        choices: [
+          'View all employees',
+          'View departments',
+          'View all roles',
+          'Add department',
+          'Add Role',
+          'Add employee',
+          'Update employee',
+        ],
       },
     ]);
+    // await allDept()
 
-    switch (response.choice) {
-      case 'View':
+    switch (mainlist.choice) {
+      case 'View all':
         db.query(
-          'SELECT departments.dept_name AS department_name, employees.first_name, employees.last_name AS employee_name, roles.title AS title, roles.salary AS salary FROM employees JOIN roles ON employees.role_id = roles.id JOIN departments ON roles.department_id = departments.id;',
+          `SELECT * FROM employees;`,
+
           (err, results) => {
             if (err) throw err;
 
             console.table(results);
-            promptUser();
+            promptUserMain();
           }
         );
-        break;
+    }
 
-      case 'Edit':
-        let newResponse = await inquirer.prompt({
-          name: 'edit',
-          message: 'Who would you like to edit?',
-          type: 'list',
-          choices: [
-            'SHANNA BANANA',
-            'DANNA BANANA',
-            'LANA BANANA',
-            'HANNAH MONTANA',
-          ],
-        });
-        newResponse = [newResponse.choice];
+    switch (mainlist.choice) {
+      case 'View departments':
         db.query(
-          'select from employees.first_name, employees.last_name AS employee_name;'
-        );
-        console.log(newResponse)
-        {
-          if (newResponse === '')
-            inquirer.prompt([
-              {
-                message: ['what would you like to edit?'],
-                choices: ['SALARY', 'NAME', 'TITLE', 'DEPARTMENT'],
-              },
-            ]);
-          if (newResponse === 'NAME') {
-            return db.query(
-              'employees.first_name, employees.last_name AS employee_name'
-            );
+          `SELECT * FROM departments`,
+
+          (err, results) => {
+            if (err) throw err;
+
+            console.table(results);
+            promptUserMain();
           }
-        }
+        );
+    }
+    switch (mainlist.choice) {
+      case 'View all roles':
+        db.query(
+          `SELECT 
+          departments.dept_name AS department_name,
+          CONCAT(employees.firstname, ' ', employees.lastname) AS employee_name,
+          roles.title AS title,
+          roles.salary AS salary,
+          CONCAT(managers.firstname, ' ', managers.lastname) AS manager_name
+      FROM 
+          employees
+      JOIN 
+          roles ON employees.role_id = roles.id
+      JOIN 
+          departments ON roles.department_id = departments.id
+      LEFT JOIN 
+          employees AS managers ON employees.manager_id = managers.id;`,
 
+          (err, results) => {
+            if (err) throw err;
+
+            console.table(results);
+            promptUserMain();
+          }
+        );
         break;
+      //Break to switch to new function
+    }
+    await newDeptFunc();
+    async function newDeptFunc() {
+      switch (mainlist.choice) {
+        case 'Add department':
+          let { newDept, newSalary } = await inquirer.prompt([
+            {
+              name: 'newDept',
+              message: 'Please enter the new department name.',
+              type: 'input',
+            },
+            {
+              name: 'newSalary',
+              message: 'What is the salary for this new position',
+              type: 'input',
+            },
+          ]);
 
+          db.query(
+            (newDept = `INSERT INTO departments (dept_name) VALUES ("${newDept}")`),
+            (newSalary = `INSERT INTO roles (salary) VALUES (${newSalary});
+          `),
+            (err, results) => {
+              if (err) throw err;
+              console.error(err, results);
+              console.log(newDept);
+            }
+          );
+      }
     }
   } catch (error) {
     console.error('Error in prompt:', error);
