@@ -18,5 +18,10 @@
     "routes": "^2.1.0",
     "sequelize": "^6.33.0",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.33.2"
   }
 }
