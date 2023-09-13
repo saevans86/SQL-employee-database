@@ -29,4 +29,4 @@ VALUES (1, "DAVID", "JENKINS", 1, 4),
 (7, "FREDD", "FLINSTONE", 7, 9),
 (8, "TOM", "WADDLESWORTH", 8, 10),
 (9, "KAMMY", "KEY", 9, 10),
-(10, "JAMAL", "EVANS", 10, null);
+(10, "JAMAL", "EVANS", 10, 10);
