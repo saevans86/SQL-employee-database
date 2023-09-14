@@ -35,12 +35,20 @@ The app uses mysql2, inquirer, and node
 ## Usage 
 To run the app, install the necessary modules required to access the server, navigate to the server.js file folder and open the terminal. In the terminal type node server.js and continue through the prompts. 
 
-![Reference image showing the first 3 prompts of the command line.](./assets/Screenshot%202023-09-14%20084841.png)
+![Reference image showing the first 3 prompts of the command linem see below for video.](./assets/Screenshot%202023-09-14%20084841.png)
 
     
 
+https://github.com/saevans86/SQL-employee-manager/assets/130856120/5fb42a82-f9b4-4dc5-bce3-78f349a46d29
+
+
+
 ## Credits 
-MDN, stack, and the TA Trever for putting the MAP function on my radar!
+
+- https://developer.mozilla.org/en-US/
+- https://www.tutorialsteacher.com/sql/sql-insert-statement
+- https://stackoverflow.com/
+- TA Trever for putting the MAP function on my radar!
 
 
 
