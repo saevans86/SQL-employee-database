@@ -4,9 +4,9 @@
 
 
 
-- My motivation for this project was to learn as much as SQL as possible for this project, needless to say I did learn quite a bit, but still need a lot more time getting to know inserts/updates etc. I definitely learned a lot about nesting functions as well as async functions and how they work and how it affects the 
+- My motivation for this project was to learn as much as SQL as possible for this project, needless to say I did learn quite a bit, but still need a lot more time getting to know inserts/updates etc. I definitely learned a lot about nesting functions as well as async functions and how they work. 
 
-- My reason for building this project was to dig into database management with a clean and effective app, that can serve as a tool for building, editing, and managing larger and more complex databases. Some features that would be beneficial to this app would be a HTML page structure so that it could serve a greater audience. 
+- My reason for building this project was to dig into database management with a clean and effective app, that can serve as a tool for building, editing and managing larger and more complex databases. Some features that would be beneficial to this app would be a HTML page structure so that it could serve a greater audience. 
 
 - Some of the issues I initially faced was trying to implement too many things at once. My plan was to find a way to edit an employee with using routes and query, but they somewhat serve the same purpose, and the previous assignments were completed using routes, so working a newer and less familiar method was beneficial especially since its primary function is querying the database.
 
